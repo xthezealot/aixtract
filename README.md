@@ -47,8 +47,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ## 💻 Usage
 
-### Basic Workflow
-
 1. **Create Configuration File**  
    Create `.aixtract` in your project root with target files:
 
@@ -74,16 +72,6 @@ export PATH="$HOME/.local/bin:$PATH"
    `~/Downloads/<project_name>_<timestamp>/`  
    (Automatically opened on macOS/Linux)
 
-### Advanced Options
-
-```bash
-# Custom output directory
-aixtract --output ~/my_custom_dir
-
-# Custom configuration file
-aixtract --config my_special_list.txt
-```
-
 ## 🌟 Example Transformation
 
 **Original Structure**:
@@ -103,7 +91,7 @@ myproject/
 **After Processing**:
 
 ```text
-/tmp/myproject_20250101_123456/
+/tmp/myproject_20250101123456/
 ├── src__models__user.py
 ├── tests__test_user.py
 └── config__settings.json
