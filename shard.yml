@@ -1,0 +1,13 @@
+name: aixtract
+version: 1.0.0
+
+authors:
+  - The Zealot
+
+targets:
+  aixtract-cr:
+    main: aixtract.cr
+
+crystal: '>= 1.15.0'
+
+license: MIT
