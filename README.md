@@ -1,65 +1,94 @@
-# aixtract
+# aixtract 🚀
 
-A simple utility to prepare files for AI analysis by copying them with their directory structure encoded in the filename.
+**Flatten directory structures for AI analysis while preserving hierarchy context**
 
 ## Description
 
-`aixtract` reads a list of file paths from a `.aixtract` file and copies each file to a new directory, encoding the original path hierarchy into the filename using double underscores (`__`).  
-For example, `src/models/user.py` becomes `src__models__user.py`.
+`aixtract` transforms nested file structures into flat directories with encoded path information, making it ideal for uploading codebases to AI assistants that lack directory support.
 
-This is particularly useful when preparing files to upload to AI assistants that don't support directory structures.
+**How it works**:
 
-## Installation
+- Reads file paths from `.aixtract` configuration
+- Copies files to a new timestamped temporary directory
+- Encodes original paths using double underscores (`__`)
+
+**Example transformation**:  
+`src/models/user.py` → `src__models__user.py`
+
+## Why Use This?
+
+- 🤖 **AI-Friendly**: Maintain file relationships for LLMs without directory support
+- 🕵️ **Context Preservation**: Hierarchical information remains visible in filenames
+- ⚡ **Zero Dependencies**: Single binary for macOS/Linux
+
+## Installation 📦
 
 ### Precompiled Binaries
 
-For macOS:
+```bash
+# Ensure target directory exists
+mkdir -p ~/.local/bin
 
-```sh
-wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-darwin-arm64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
+# macOS (Apple Silicon)
+curl -L https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-darwin-arm64 -o ~/.local/bin/aixtract && chmod +x ~/.local/bin/aixtract
+
+# Linux (AMD64)
+wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-amd64 -O ~/.local/bin/aixtract && chmod +x ~/.local/bin/aixtract
+
+# Linux (ARM64)
+wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-arm64 -O ~/.local/bin/aixtract && chmod +x ~/.local/bin/aixtract
 ```
 
-For Linux AMD64:
+**Add to PATH** (if not already):
 
-```sh
-wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-amd64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
+```bash
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
-For Linux ARM64:
+## Usage ⚒
 
-```sh
-wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-arm64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
+### Basic Workflow
+
+1. **Create Configuration File**  
+   Create `.aixtract` in your project root with target files:
+
+   ```bash
+   # Example .aixtract file
+   src/models/user.py
+   tests/test_user.py
+   config/settings.json
+
+   # Use find to auto-generate (e.g., all Python files)
+   # find . -name "*.py" >> .aixtract
+   ```
+
+2. **Run Extraction**  
+   From your project directory:
+
+   ```bash
+   aixtract
+   ```
+
+3. **Access Output**  
+   Files are copied to:  
+   `~/Downloads/<project_name>_<timestamp>/`  
+   (Automatically opened on macOS/Linux)
+
+### Advanced Options
+
+```bash
+# Custom output directory
+aixtract --output ~/my_custom_dir
+
+# Custom configuration file
+aixtract --config my_special_list.txt
 ```
 
-## Usage
+## Example Transformation 🌟
 
-1. Create a `.aixtract` file in your project directory listing the files you want to process:
+**Original Structure**:
 
-```plaintext
-src/models/user.py
-tests/test_user.py
-config/settings.json
-# Lines starting with # are ignored
-```
-
-2. Run the command:
-
-```sh
-aixtract
-```
-
-The utility will:
-
-1. Create a new directory in your Downloads folder named `project_name_YYYYMMDD_HHMMSS`
-2. Copy each listed file to this directory, converting path separators to double underscores
-3. Preserve file permissions and metadata
-4. Open the target directory automatically (on supported platforms)
-
-## Example
-
-If your project structure looks like this:
-
-```txt
+```text
 myproject/
 ├── .aixtract
 ├── src/
@@ -71,32 +100,22 @@ myproject/
     └── settings.json
 ```
 
-And your `.aixtract` contains:
+**After Processing**:
 
-```txt
-src/models/user.py
-tests/test_user.py
-config/settings.json
-```
-
-Running `aixtract` will create:
-
-```txt
+```text
 /tmp/myproject_20250101_123456/
 ├── src__models__user.py
 ├── tests__test_user.py
 └── config__settings.json
 ```
 
-## Error Handling
+## Requirements ☑️
 
-The utility will:
+- **OS**: macOS 10.15+ or modern Linux distro
+- **Arch**: x86_64 or ARM64
+- **Permissions**: Read access to source files, write access to output directory
 
-- Skip files that don't exist with a warning
-- Skip empty lines and comments in `.aixtract`
-- Exit with error if `.aixtract` file is not found
-- Show clear error messages for any issues during copying
+## FAQ ❓
 
-## Requirements
-
-- macOS or Linux
+**Q**: Can I use this for non-code files?  
+**A**: Absolutely! Works with any file type
