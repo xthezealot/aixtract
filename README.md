@@ -1,4 +1,4 @@
-# aixtract 🚀
+# 🗂️ aixtract
 
 **Flatten directory structures for AI analysis while preserving hierarchy context**
 
@@ -21,7 +21,7 @@
 - 🕵️ **Context Preservation**: Hierarchical information remains visible in filenames
 - ⚡ **Zero Dependencies**: Single binary for macOS/Linux
 
-## Installation 📦
+## 📦 Installation
 
 ### Precompiled Binaries
 
@@ -45,7 +45,7 @@ wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-li
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-## Usage ⚒
+## 💻 Usage
 
 ### Basic Workflow
 
@@ -84,7 +84,7 @@ aixtract --output ~/my_custom_dir
 aixtract --config my_special_list.txt
 ```
 
-## Example Transformation 🌟
+## 🌟 Example Transformation
 
 **Original Structure**:
 
@@ -109,13 +109,13 @@ myproject/
 └── config__settings.json
 ```
 
-## Requirements ☑️
+## ☑️ Requirements
 
 - **OS**: macOS 10.15+ or modern Linux distro
 - **Arch**: x86_64 or ARM64
 - **Permissions**: Read access to source files, write access to output directory
 
-## FAQ ❓
+## ❓ FAQ
 
 **Q**: Can I use this for non-code files?  
 **A**: Absolutely! Works with any file type
