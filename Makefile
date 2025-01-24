@@ -1,4 +1,4 @@
-CRYSTAL_IMAGE := 84codes/crystal:latest-alpine
+CRYSTAL_IMAGE := 84codes/crystal:latest-debian-bookworm
 BINARY_NAME := aixtract
 
 build-darwin-arm64:

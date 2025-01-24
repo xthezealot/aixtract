@@ -14,24 +14,22 @@ This is particularly useful when preparing files to upload to AI assistants that
 ### Precompiled Binaries
 
 For macOS:
+
 ```sh
-wget https://github.com/yourusername/aixtract/releases/download/v1.0.0/aixtract-darwin-arm64 -O /usr/local/bin/aixtract
-chmod +x /usr/local/bin/aixtract
+wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-darwin-arm64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
 ```
 
 For Linux AMD64:
+
 ```sh
-wget https://github.com/yourusername/aixtract/releases/download/v1.0.0/aixtract-linux-amd64 -O /usr/local/bin/aixtract
-chmod +x /usr/local/bin/aixtract
+wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-amd64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
 ```
 
 For Linux ARM64:
+
 ```sh
-wget https://github.com/yourusername/aixtract/releases/download/v1.0.0/aixtract-linux-arm64 -O /usr/local/bin/aixtract
-chmod +x /usr/local/bin/aixtract
+wget https://github.com/xthezealot/aixtract/releases/download/v1.0.0/aixtract-linux-arm64 -O $HOME/.local/bin/aixtract && chmod +x $HOME/.local/bin/aixtract
 ```
-
-
 
 ## Usage
 
